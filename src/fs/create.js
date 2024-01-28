@@ -21,8 +21,7 @@ const create = async () => {
     try {
       await fs.access(folderPath);
     } catch (err) {
-      console.log(`Folder "${sourceFolderName}" is not found.`);
-      throw new Error(err);
+      throw new Error(`FS operation failed: Folder "${sourceFolderName}" is not found.`);
     }
 
     // Check file existence. If the file exists, throw an error

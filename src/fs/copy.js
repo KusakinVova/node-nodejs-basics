@@ -17,7 +17,7 @@ const copy = async () => {
     try {
       await fs.access(sourceFolderPath);
     } catch (err) {
-      console.log(`folder "${sourceFolderName}" is not found.`);
+      throw new Error(`FS operation failed: Folder "${sourceFolderName}" is not found.`);
     }
 
     await fs.access(destinationFolderPath);
@@ -50,7 +50,6 @@ const copy = async () => {
       // Another error, display an error message
       console.error(error.message);
     }
-    // console.error(error.message);
   }
 };
 
