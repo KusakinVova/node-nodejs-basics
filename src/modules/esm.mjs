@@ -5,11 +5,6 @@ import './files/c.js';
 import { readJsonFile } from './readJsonFile.js';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// ===============
-
 const random = Math.random();
 
 let unknownObject;
@@ -24,7 +19,9 @@ console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
 console.log(`Path segment separator is "${path.sep}"`);
 
+const __filename = fileURLToPath(import.meta.url);
 console.log(`Path to current file is ${__filename}`);
+const __dirname = dirname(__filename);
 console.log(`Path to current directory is ${__dirname}`);
 
 const myServer = createServerHttp((_, res) => {
