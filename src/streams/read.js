@@ -9,20 +9,11 @@ const read = async () => {
   const fileName = 'fileToRead.txt';
   const sourceFolderName = 'files';
   const filePath = path.join(__dirname, sourceFolderName, fileName);
-  try {
-    const stream = fs.createReadStream(filePath, 'utf8');
+  const readStream = fs.createReadStream(filePath, 'utf8');
 
-    stream.on('data', (data) => {
-      process.stdout.write(data);
-    });
-
-    stream.on('error', (error) => {
-      console.error(error);
-    });
-  } catch (error) {
-    console.error(error);
-  }
-  // Write your code here
+  readStream.on('data', (buf) => {
+    console.log(buf);
+  });
 };
 
 await read();
