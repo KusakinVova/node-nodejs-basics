@@ -6,9 +6,7 @@ import path from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const read = async () => {
-  const sourceFolderName = 'files';
-  const fileName = 'fileToRead.txt';
+export const readJsonFile = async ({ fileName, sourceFolderName }) => {
   const folderPath = path.join(__dirname, sourceFolderName);
   const filePath = path.join(folderPath, fileName);
 
@@ -21,8 +19,8 @@ const read = async () => {
     }
 
     await fs.access(filePath);
-    const content = await fs.readFile(filePath, 'utf8');
-    console.log(content);
+    return await fs.readFile(filePath, 'utf8');
+    // console.log(content);
   } catch (error) {
     if (error.code === 'ENOENT') {
       console.log(`FS operation failed. File "${fileName}" is not found.`);
@@ -32,5 +30,3 @@ const read = async () => {
     }
   }
 };
-
-await read();
